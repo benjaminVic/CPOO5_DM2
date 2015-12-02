@@ -1,14 +1,14 @@
-package process;
+package Process;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class regexTest {
+public class RegexTest {
 
 	@Test
 	public void testLs() {
-		Ls l = new Ls(456, "ls");		
+		Ls l = new Ls("ls");		
 		try {
 			l.regexp();
 		} catch (Exception e) {
@@ -16,7 +16,7 @@ public class regexTest {
 			fail("this regular expression is wrong");
 		}
 		
-		Ls l2 = new Ls(667, "     ls    ");
+		Ls l2 = new Ls("     ls    ");
 		
 		try {
 			l2.regexp();
@@ -26,5 +26,10 @@ public class regexTest {
 		}
 	}
 
+	@Test
+	public void lsTest(){
+		Ls l = new Ls("ls");
+		new Thread(l).start();;
+	}
 	
 }
