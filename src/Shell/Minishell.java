@@ -1,4 +1,4 @@
-package Shell;
+package shell;
 import java.util.*;
 
 
@@ -15,6 +15,20 @@ public class Minishell {
 		setListProcess(new ArrayList<Process>());	
 	}
 
+	public void processMatcher(String s){
+		//TODO enlever le prompt si récupéré
+		String results[] = s.split("[\\s]*");
+		
+		switch (results[0]){
+		
+		case ("ls") :
+			break;
+		
+		default :
+			break;
+		}
+	}
+	
 	//_____________________GETTEURS ET SETTEURS___________________________
 
 	public String getCurrentDir() {

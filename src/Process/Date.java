@@ -1,23 +1,22 @@
-package Process;
+package process;
 
-import Shell.Process;
+import shell.Process;
 
 
 public class Date extends Process{
 
-	public Date(int pid) {
-		super(pid);
+	public Date(int pid, String commande) {
+		super(pid, commande);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public Process call() throws Exception {
+	public void run() {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
-	public void regexp(String toEvaluate) throws Exception{
+	public void regexp() throws Exception{
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,4 +1,4 @@
-package Shell;
+package shell;
 
 public class Console {
 	
