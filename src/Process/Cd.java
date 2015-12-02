@@ -1,12 +1,12 @@
-package process;
+package Process;
 
-import shell.Process;
+import Shell.Process;
 
 
 public class Cd extends Process{
 
-	public Cd(int pid, String commande) {
-		super(pid, commande);
+	public Cd(String commande) {
+		super(commande);
 		// TODO Auto-generated constructor stub
 	}
 

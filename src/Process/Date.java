@@ -1,12 +1,12 @@
-package process;
+package Process;
 
-import shell.Process;
+import Shell.Process;
 
 
 public class Date extends Process{
 
-	public Date(int pid, String commande) {
-		super(pid, commande);
+	public Date(String commande) {
+		super(commande);
 		// TODO Auto-generated constructor stub
 	}
 

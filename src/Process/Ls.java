@@ -1,15 +1,15 @@
-package process;
+package Process;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import shell.Process;
+import Shell.Process;
 
 
 public class Ls extends Process {
 
-	public Ls(int pid, String commande) {
-		super(pid, commande);
+	public Ls(String commande) {
+		super(commande);
 		this.regexp = "[\\s]*ls[\\s]*";
 	}
 
@@ -25,11 +25,13 @@ public class Ls extends Process {
 		// TODO Auto-generated constructor stub
 		try {
 			regexp();
+			System.out.println("IT IS ALIVE");
 		} catch (PatternSyntaxException e) {
 			System.out.println("Mauvaise expression régulière");
 			e.printStackTrace();
 		} catch (MauvaiseSyntaxeException i) {
 			//TODO Renvoyer à l'utilisateur un message indiquant sa mauvaise syntaxe
+			System.out.println("Commande incorrecte, la syntaxe est :\n ls");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

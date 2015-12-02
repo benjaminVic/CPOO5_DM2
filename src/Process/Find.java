@@ -1,12 +1,12 @@
-package process;
+package Process;
 
-import shell.Process;
+import Shell.Process;
 
 
 public class Find extends Process{
 
-	public Find(int pid, String commande) {
-		super(pid, commande);
+	public Find(String commande) {
+		super(commande);
 		// TODO Auto-generated constructor stub
 	}
 

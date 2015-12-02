@@ -1,5 +1,12 @@
-package shell;
+package Shell;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import Process.*;
+
+import org.w3c.dom.ls.LSException;
 
 
 public class Minishell {
@@ -22,6 +29,8 @@ public class Minishell {
 		switch (results[0]){
 		
 		case ("ls") :
+			Ls l = new Ls(s);
+		
 			break;
 		
 		default :
@@ -48,5 +57,14 @@ public class Minishell {
 	}
 	
 	//_____________________________________________________________________
+	
+
+	/*public void template() {
+		ExecutorService es = Executors.newFixedThreadPool(4);
+		Callable<Void> call = Executors.<Void>callable(task, void);
+		//task : instance de commande a execter
+		Future<Void> f = es.<Void>submit(task, null);
+		f.get(); // appel bloquant
+	}*/
 	
 }

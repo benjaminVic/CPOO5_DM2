@@ -1,11 +1,15 @@
-package shell;
+package Shell;
 
-import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 //TODO Verfier le fonctionnement de Callable et remplacer par Runnable au cas où
 public abstract class Process implements Runnable{
 	
-	protected int pid;
+	//protected long pid;//ATOMIC INT
+	
+	protected static AtomicInteger pid;
+	//pid.getAndIncrement();
+	protected final int currentProcessPid;
 	protected String regexp;
 	protected String commande;
 	
@@ -14,8 +18,8 @@ public abstract class Process implements Runnable{
 	 * @param pid : n° unique de processus
 	 */
 	//TODO Faire la génération d'un pid unique basé sur une seed de temps
-	public Process(int pid, String commande){
-		this.pid = pid;
+	public Process(String commande){
+		this.currentProcessPid = pid.getAndIncrement();
 		this.regexp = "";
 		this.commande = commande;
 	}
