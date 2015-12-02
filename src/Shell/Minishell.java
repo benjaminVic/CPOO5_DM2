@@ -1,3 +1,4 @@
+package Shell;
 import java.util.*;
 
 
@@ -5,6 +6,9 @@ public class Minishell {
 	
 	private String currentDir;
 	private List<Process> listProcess;
+	
+
+	//USE ExecutorService
 	
 	public Minishell(){
 		this.currentDir = "user.dir";
