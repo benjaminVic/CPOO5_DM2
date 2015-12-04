@@ -1,31 +1,35 @@
 package Shell;
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 import Process.*;
 
 import org.w3c.dom.ls.LSException;
 
 
 public class Minishell {
-	
-	private String currentDir;
+	//De la forme C:\Users\Hoddafas Doaken\Documents\GitHub\CPOO5_DM2
+	private static String currentDir;
 	private List<Process> listProcess;
 	
 
 	//USE ExecutorService
 	
 	public Minishell(){
-		this.currentDir = "user.dir";
+		currentDir = System.getProperty("user.dir");
+		System.out.println(currentDir);
 		setListProcess(new ArrayList<Process>());	
 	}
 
 	public void processMatcher(String s){
 		//TODO enlever le prompt si récupéré
 		String results[] = s.split("[\\s]*");
-		
+		//10 est une valeur arbitraire
+		ExecutorService es = Executors.newFixedThreadPool(10);
 		switch (results[0]){
 		
 		case ("ls") :
@@ -40,12 +44,12 @@ public class Minishell {
 	
 	//_____________________GETTEURS ET SETTEURS___________________________
 
-	public String getCurrentDir() {
+	public static String getCurrentDir() {
 		return currentDir;
 	}
 
-	public void setCurrentDir(String currentDir) {
-		this.currentDir = currentDir;
+	public static void setCurrentDir(String currentDir) {
+		currentDir = currentDir;
 	}
 
 	public List<Process> getListProcess() {

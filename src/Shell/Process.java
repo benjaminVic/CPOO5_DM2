@@ -7,11 +7,12 @@ public abstract class Process implements Runnable{
 	
 	//protected long pid;//ATOMIC INT
 	
-	protected static AtomicInteger pid;
+	protected static AtomicInteger pid = new AtomicInteger(0);
 	//pid.getAndIncrement();
 	protected final int currentProcessPid;
 	protected String regexp;
 	protected String commande;
+	protected String localDir;
 	
 	/**
 	 * Constructeur de Process
@@ -19,9 +20,10 @@ public abstract class Process implements Runnable{
 	 */
 	//TODO Faire la génération d'un pid unique basé sur une seed de temps
 	public Process(String commande){
-		this.currentProcessPid = pid.getAndIncrement();
+		this.currentProcessPid = pid.incrementAndGet();
 		this.regexp = "";
 		this.commande = commande;
+		this.localDir = Minishell.getCurrentDir();
 	}
 	
 	public abstract void regexp() throws Exception;
