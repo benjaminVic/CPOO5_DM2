@@ -1,7 +1,5 @@
 package Process;
 import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 import Shell.Minishell;
@@ -13,13 +11,6 @@ public class Ls extends Process {
 	public Ls(String commande) {
 		super(commande);
 		this.regexp = "[\\s]*ls[\\s]*";
-	}
-
-	public void regexp() throws Exception {
-		Pattern p = Pattern.compile(this.regexp);
-		Matcher m = p.matcher(this.commande);
-		
-		if (!m.matches()) throw new MauvaiseSyntaxeException();
 	}
 
 	@Override

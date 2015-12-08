@@ -7,7 +7,7 @@ public class Cd extends Process{
 
 	public Cd(String commande) {
 		super(commande);
-		// TODO Auto-generated constructor stub
+		this.regexp = "[\\s]*cd[\\s]*" + ""; //TODO FORMAT FOR FILESYSTEM PATH
 	}
 
 	@Override
@@ -15,10 +15,5 @@ public class Cd extends Process{
 		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public void regexp() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

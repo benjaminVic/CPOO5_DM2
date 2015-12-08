@@ -1,6 +1,10 @@
 package Shell;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import Process.MauvaiseSyntaxeException;
 
 //TODO Verfier le fonctionnement de Callable et remplacer par Runnable au cas où
 public abstract class Process implements Runnable{
@@ -26,5 +30,10 @@ public abstract class Process implements Runnable{
 		this.localDir = Minishell.getCurrentDir();
 	}
 	
-	public abstract void regexp() throws Exception;
+	public void regexp() throws Exception {
+		Pattern p = Pattern.compile(this.regexp);
+		Matcher m = p.matcher(this.commande);
+		
+		if (!m.matches()) throw new MauvaiseSyntaxeException();
+	}
 }
