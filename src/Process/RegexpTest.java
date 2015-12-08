@@ -4,10 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class RegexTest {
+import Shell.Minishell;
+
+public class RegexpTest {
 
 	@Test
 	public void testLs() {
+		Minishell ms = new Minishell();
 		Ls l = new Ls("ls");		
 		try {
 			l.regexp();
@@ -28,6 +31,7 @@ public class RegexTest {
 
 	@Test
 	public void lsTest(){
+		Minishell ms = new Minishell();
 		Ls l = new Ls("ls");
 		new Thread(l).start();;
 	}
