@@ -1,4 +1,4 @@
-package tempshell;
+package shell;
 import java.io.File;
 
 public class PrototypeCommandes {

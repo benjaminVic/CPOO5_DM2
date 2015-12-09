@@ -1,9 +1,9 @@
-package tempshell;
+package shell;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import temp.Ls;
+import process.Ls;
 
 
 public class Minishell {
