@@ -1,13 +1,19 @@
 package shell;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import process.Ls;
 
 
 public class Minishell {
 	//De la forme C:\Users\Hoddafas Doaken\Documents\GitHub\CPOO5_DM2
+	
+	//System.getProperty("os.name")
+	//
 	private static String currentDir;
 	private List<Process> listProcess;
 	
@@ -28,8 +34,19 @@ public class Minishell {
 		switch (results[0]){
 		
 		case ("ls") :
-			Ls l = new Ls(s);
-		
+			Runnable l = new Ls(s);
+			Callable<Void> call = Executors.<Void>callable(l, null);
+			//task : instance de commande a execter
+			Future<Void> f = es.<Void>submit(l, null);
+			try {
+				f.get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // appel bloquant
 			break;
 		
 		default :
