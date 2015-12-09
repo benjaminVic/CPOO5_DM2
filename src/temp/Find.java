@@ -1,11 +1,11 @@
-package Process;
+package temp;
 
-import Shell.Process;
+import tempshell.Process;
 
 
-public class Pwd extends Process{
+public class Find extends Process{
 
-	public Pwd(String commande) {
+	public Find(String commande) {
 		super(commande);
 		// TODO Auto-generated constructor stub
 	}

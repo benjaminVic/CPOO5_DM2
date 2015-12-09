@@ -1,10 +1,10 @@
-package Shell;
+package tempshell;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Process.MauvaiseSyntaxeException;
+import temp.MauvaiseSyntaxeException;
 
 //TODO Verfier le fonctionnement de Callable et remplacer par Runnable au cas où
 public abstract class Process implements Runnable{

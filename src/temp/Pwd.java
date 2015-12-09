@@ -1,11 +1,11 @@
-package Process;
+package temp;
 
-import Shell.Process;
+import tempshell.Process;
 
 
-public class Date extends Process{
+public class Pwd extends Process{
 
-	public Date(String commande) {
+	public Pwd(String commande) {
 		super(commande);
 		// TODO Auto-generated constructor stub
 	}
@@ -16,7 +16,7 @@ public class Date extends Process{
 	}
 
 	@Override
-	public void regexp() throws Exception{
+	public void regexp() throws Exception {
 		// TODO Auto-generated method stub
 		
 	}

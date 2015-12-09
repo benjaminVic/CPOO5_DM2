@@ -1,9 +1,9 @@
-package Process;
+package temp;
 import java.io.File;
 import java.util.regex.PatternSyntaxException;
 
-import Shell.Minishell;
-import Shell.Process;
+import tempshell.Minishell;
+import tempshell.Process;
 
 
 public class Ls extends Process {
