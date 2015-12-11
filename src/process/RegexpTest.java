@@ -14,7 +14,7 @@ import org.junit.Test;
 import shell.Minishell;
 
 public class RegexpTest {
-
+/*
 	@Test
 	public void testLs() {
 		Minishell ms = new Minishell();
@@ -55,6 +55,20 @@ public class RegexpTest {
 		} // appel bloquant
 		if (!System.getProperty("os.name").contains("Windows")){
 			fail("HAHA t'es sur mac hafça :p");
+		}
+	}
+	*/
+	@Test
+	public void cdTest(){
+		Minishell ms = new Minishell();
+		String s = "         cd /JE MAnGE D3S Nà0S/";
+		System.out.println(s);
+		Cd cd = new Cd(s);		
+		try {
+			cd.regexp();
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("this string is wrong");
 		}
 	}
 	
