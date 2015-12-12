@@ -58,10 +58,12 @@ public class RegexpTest {
 		}
 	}
 	*/
+	
 	@Test
 	public void cdTest(){
 		Minishell ms = new Minishell();
-		String s = "         cd /JE MAnGE D3S Nà0S/";
+		//String s = "         cd /JE MAnGE D3S Nà0S//";
+		String s = " cd /./";
 		System.out.println(s);
 		Cd cd = new Cd(s);		
 		try {

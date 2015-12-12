@@ -1,5 +1,8 @@
 package process;
 
+import java.util.regex.PatternSyntaxException;
+
+import shell.Minishell;
 import shell.Process;
 
 
@@ -7,18 +10,26 @@ public class Pwd extends Process{
 
 	public Pwd(String commande) {
 		super(commande);
-		// TODO Auto-generated constructor stub
+		this.regexp = "[\\s]*pwd[\\s]*";
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void regexp() throws Exception {
-		// TODO Auto-generated method stub
-		
+		try {
+			regexp();
+			//TODO CHANGE TO PROPER STREAM
+	        System.out.println(Minishell.getCurrentDir());
+		} catch (PatternSyntaxException e) {
+			System.out.println("Mauvaise expression régulière");
+			e.printStackTrace();
+		} catch (MauvaiseSyntaxeException i) {
+			//TODO Renvoyer à l'utilisateur un message indiquant sa mauvaise syntaxe
+			System.out.println("Commande incorrecte, la syntaxe est :\n ls");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//TODO close thread 
+		}
 	}
 
 }

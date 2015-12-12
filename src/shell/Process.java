@@ -33,7 +33,11 @@ public abstract class Process implements Runnable{
 	public void regexp() throws Exception {
 		Pattern p = Pattern.compile(this.regexp);
 		Matcher m = p.matcher(this.commande);
-		
 		if (!m.matches()) throw new MauvaiseSyntaxeException();
 	}
+	
+	public int getPid(){
+		return this.currentProcessPid;
+	}
+	
 }

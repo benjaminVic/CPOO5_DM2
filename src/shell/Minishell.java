@@ -15,7 +15,7 @@ public class Minishell {
 	//System.getProperty("os.name")
 	//
 	private static String currentDir;
-	private List<Process> listProcess;
+	private static List<Process> listProcess;
 	
 
 	//USE ExecutorService
@@ -61,10 +61,10 @@ public class Minishell {
 	}
 
 	public static void setCurrentDir(String currentDir) {
-		currentDir = currentDir;
+		Minishell.currentDir = currentDir;
 	}
 
-	public List<Process> getListProcess() {
+	public static List<Process> getListProcess() {
 		return listProcess;
 	}
 
