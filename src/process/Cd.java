@@ -22,9 +22,31 @@ public class Cd extends Process{
 	 * "((ca)|(fr)|(org)|(com)|(co.uk))"+
 	 * "[a-zA-Z]+"
 	 */
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		try{
+			regexp();		
+			
+	        File directory = new File(1);
+	        if(directory.isDirectory()==true) {
+	            System.setProperty(Minishell.getCurrentDir(), directory.getAbsolutePath());
+	        } else {
+	            System.out.println(1 + " n'est pas un repertoire.");
+	        }
+			
+		}
+		catch (PatternSyntaxException e) {
+			System.out.println("Mauvaise expression régulière");
+			e.printStackTrace();
+		} catch (MauvaiseSyntaxeException i) {
+			//TODO Renvoyer à l'utilisateur un message indiquant sa mauvaise syntaxe
+			System.out.println("Commande incorrecte, la syntaxe est :\n ps");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//TODO close thread 
+		}
 	}
 
 
