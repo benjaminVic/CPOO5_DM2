@@ -6,11 +6,10 @@ import java.util.regex.Pattern;
 
 import process.MauvaiseSyntaxeException;
 
-//TODO Verfier le fonctionnement de Callable et remplacer par Runnable au cas où
 public abstract class Process implements Runnable{
 	
-	//protected long pid;//ATOMIC INT
-	
+
+	//L'atomic interger permet d'avoir un pid distinct pour chaque Thread
 	protected static AtomicInteger pid = new AtomicInteger(0);
 	//pid.getAndIncrement();
 	protected final int currentProcessPid;
@@ -20,9 +19,8 @@ public abstract class Process implements Runnable{
 	
 	/**
 	 * Constructeur de Process
-	 * @param pid : n° unique de processus
+	 * @param commande : la commande dont la synthae sera vérifiée
 	 */
-	//TODO Faire la génération d'un pid unique basé sur une seed de temps
 	public Process(String commande){
 		this.currentProcessPid = pid.incrementAndGet();
 		this.regexp = "";
@@ -30,12 +28,20 @@ public abstract class Process implements Runnable{
 		this.localDir = Minishell.getCurrentDir();
 	}
 	
+	/**
+	 * Compare l'expression régulière avec l'entré utilisateur et lève une Exception si besoin
+	 * @throws MauvaiseSyntaxeException : Indique une erreur de l'entrée utilisateur
+	 */
 	public void regexp() throws Exception {
 		Pattern p = Pattern.compile(this.regexp);
 		Matcher m = p.matcher(this.commande);
 		if (!m.matches()) throw new MauvaiseSyntaxeException();
 	}
 	
+	/**
+	 * Indique la pid du processus
+	 * @return : int du pid
+	 */
 	public int getPid(){
 		return this.currentProcessPid;
 	}

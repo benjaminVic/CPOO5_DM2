@@ -29,8 +29,8 @@ public class Cd extends Process{
 	public void run() {
 		try{
 			regexp();		
-			
-	        File directory = new File("1");
+			String[] path = regexp.split("\\s*cd\\s+");
+	        File directory = new File(Minishell.getCurrentDir()+path[0]);
 	        if(directory.isDirectory()==true) {
 	            System.setProperty(Minishell.getCurrentDir(), directory.getAbsolutePath());
 	        } else {

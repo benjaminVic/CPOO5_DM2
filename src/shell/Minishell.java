@@ -17,17 +17,20 @@ public class Minishell {
 	private static String currentDir;
 	private static List<Process> listProcess;
 	
-
-	//USE ExecutorService
-	
+	/**
+	 * Instance un minishell dont le répertoire est celui de l'executable
+	 */
 	public Minishell(){
 		currentDir = System.getProperty("user.dir");
 		System.out.println(currentDir);
-		setListProcess(new ArrayList<Process>());	
+		listProcess = new ArrayList<Process>();	
 	}
 
+	/**
+	 * Execute la commande contenue dans s sinon indique l'erreur
+	 * @param s : string à executer
+	 */
 	public void processMatcher(String s){
-		//TODO enlever le prompt si récupéré
 		String results[] = s.split("[\\s]*");
 		//10 est une valeur arbitraire
 		ExecutorService es = Executors.newFixedThreadPool(10);
@@ -35,8 +38,6 @@ public class Minishell {
 		
 		case ("ls") :
 			Runnable l = new Ls(s);
-			Callable<Void> call = Executors.<Void>callable(l, null);
-			//task : instance de commande a execter
 			Future<Void> f = es.<Void>submit(l, null);
 			try {
 				f.get();
@@ -56,21 +57,33 @@ public class Minishell {
 	
 	//_____________________GETTEURS ET SETTEURS___________________________
 
+	/**
+	 * Indique le dossier du shell
+	 * @return : String du dossier courant
+	 */
 	public static String getCurrentDir() {
 		return currentDir;
 	}
 
+	/**
+	 * Modifie le dossier courant du shell
+	 * @param currentDir : Nouveau dossier courant
+	 */
 	public static void setCurrentDir(String currentDir) {
 		Minishell.currentDir = currentDir;
 	}
 
+	/**
+	 * Renvoie l'intégralité des processus
+	 * @return : Renvoye la liste des processus
+	 */
 	public static List<Process> getListProcess() {
 		return listProcess;
 	}
-
+/*
 	public void setListProcess(List<Process> listProcess) {
 		this.listProcess = listProcess;
-	}
+	}*/
 	
 	//_____________________________________________________________________
 	

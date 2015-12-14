@@ -14,10 +14,9 @@ import org.junit.Test;
 import shell.Minishell;
 
 public class RegexpTest {
-/*
+	
 	@Test
 	public void testLs() {
-		Minishell ms = new Minishell();
 		Ls l = new Ls("ls");		
 		try {
 			l.regexp();
@@ -26,10 +25,9 @@ public class RegexpTest {
 			fail("this regular expression is wrong");
 		}
 		
-		Ls l2 = new Ls("     ls    ");
-		
+		l = new Ls("     ls    ");		
 		try {
-			l2.regexp();
+			l.regexp();
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("this regular expression is wrong");
@@ -39,9 +37,7 @@ public class RegexpTest {
 	@Test
 	public void lsTest(){
 		ExecutorService es = Executors.newFixedThreadPool(10);
-		Minishell ms = new Minishell();
 		Runnable l = new Ls(" ls  ");
-		Callable<Void> call = Executors.<Void>callable(l, null);
 		//task : instance de commande a execter
 		Future<Void> f = es.<Void>submit(l, null);
 		try {
@@ -57,7 +53,6 @@ public class RegexpTest {
 			fail("HAHA t'es sur mac hafça :p");
 		}
 	}
-	*/
 	
 	@Test
 	public void cdTest(){
