@@ -8,14 +8,12 @@ public class Console {
 	static Scanner scan = new Scanner(System.in);
 	
 	static Thread threadRead;
-	static Thread threadWrite; 
-	static Thread threadReadError;
+	static Thread threadWrite; 	
 	
 	public static void write(BufferedWriter stdOut){
 		System.out.print("MinishellPrompt$ ");
 		String input = scan.nextLine();
-		input += "\n";
-		
+		input += "\n";		
 		try {
 			stdOut.write(input);			
 			stdOut.flush();
@@ -34,17 +32,6 @@ public class Console {
 		}
 	}
 	
-	public static void readError(BufferedReader stdError) {
-		try {
-			while ((s = stdError.readLine()) != null) {
-				System.out.println(s);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
 	public static void main(String[] args){		
 		
 		try {
@@ -55,13 +42,9 @@ public class Console {
 
 			final BufferedReader stdInput = new BufferedReader
 					(new InputStreamReader (p.getInputStream()) );
-			final BufferedReader stdError = new BufferedReader
-					(new InputStreamReader (p.getErrorStream()) );
-
 			final BufferedWriter stdOutput = new BufferedWriter
 					(new OutputStreamWriter (p.getOutputStream()) );			
 
-			
 			Runnable write = new Runnable() {
 		        public void run() {
 		        	write(stdOutput);
@@ -76,26 +59,23 @@ public class Console {
 		        	read(stdInput);
 		        }
 			};	      
-		    threadRead = new Thread(read, "threadRead");
+		    threadRead = new Thread(read, "threadRead");	    
 		    threadRead.start();
+		    threadWrite.wait();
 		    
-		    Runnable readError = new Runnable() {
-		        public void run() {
-		        	readError(stdError);
-		        }
-			};	      
-		    threadReadError = new Thread(readError, "threadReadError");
-		    threadReadError.start();
-		    
-		    
+		    System.out.println("threadread  "+threadRead.getState());
+		    System.out.println("threadwrite  "+threadWrite.getState());
+		    	
 			if((stdInput.readLine()) != "quit"){
-				System.out.println("_________________!=quit");
-				write(stdOutput);
-			}
-			
+				if(!threadWrite.isAlive()){
+					write(stdOutput);
+				}
+			}			
 					
 		} 
 		catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
