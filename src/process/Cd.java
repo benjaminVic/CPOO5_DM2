@@ -1,8 +1,10 @@
 package process;
 
-import java.io.File;
-import java.util.regex.Pattern;
+import java.io.*;
+import java.util.*;
+import java.util.regex.PatternSyntaxException;
 
+import shell.Minishell;
 import shell.Process;
 
 
@@ -28,7 +30,7 @@ public class Cd extends Process{
 		try{
 			regexp();		
 			
-	        File directory = new File(1);
+	        File directory = new File("1");
 	        if(directory.isDirectory()==true) {
 	            System.setProperty(Minishell.getCurrentDir(), directory.getAbsolutePath());
 	        } else {
