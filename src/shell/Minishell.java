@@ -22,7 +22,7 @@ public class Minishell {
 	 */
 	public Minishell(){
 		currentDir = System.getProperty("user.dir");
-		System.out.println(currentDir);
+		//System.out.println(currentDir);
 		listProcess = new ArrayList<Process>();	
 	}
 
