@@ -15,7 +15,7 @@ import shell.Minishell;
 
 public class RegexpTest {
 	
-	@Test
+/*	@Test
 	public void testLs() {
 		Ls l = new Ls("ls");		
 		try {
@@ -52,20 +52,21 @@ public class RegexpTest {
 		if (!System.getProperty("os.name").contains("Windows")){
 			fail("HAHA t'es sur mac hafça :p");
 		}
-	}
+	}*/
 	
 	@Test
 	public void cdTest(){
 		Minishell ms = new Minishell();
-		//String s = "         cd JE MAnGE D3S Nà0S";
-		String s = " cd ..";
+		String s = "         cd ../..";
+		//String s = " cd C:\\Windows\\System32\\Dism";
+		//String s = " cd ..";
 		Cd cd = new Cd(s);		
-		try {
+		/*try {
 			cd.regexp();
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("this string is wrong");
-		}
+		}*/
 		ExecutorService es = Executors.newFixedThreadPool(10);
 		//task : instance de commande a execter
 		Future<Void> f = es.<Void>submit(cd, null);
