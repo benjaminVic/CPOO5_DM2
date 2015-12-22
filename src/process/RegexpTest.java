@@ -3,6 +3,7 @@ package process;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -54,19 +55,12 @@ public class RegexpTest {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	public void cdTest(){
-		Minishell ms = new Minishell();
 		String s = "         cd ../..";
 		//String s = " cd C:\\Windows\\System32\\Dism";
 		//String s = " cd ..";
-		Cd cd = new Cd(s);		
-		/*try {
-			cd.regexp();
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("this string is wrong");
-		}*/
+		Cd cd = new Cd(s);
 		ExecutorService es = Executors.newFixedThreadPool(10);
 		//task : instance de commande a execter
 		Future<Void> f = es.<Void>submit(cd, null);
@@ -82,6 +76,21 @@ public class RegexpTest {
 		if (!System.getProperty("os.name").contains("Windows")){
 			fail("HAHA t'es sur mac hafça :p");
 		}
-	}
+	}*/
 	
+	@Test
+	public void dateTest(){
+		/*SimpleDateFormat sdf = new SimpleDateFormat("YYYYYYYYYYY");
+		java.util.Date date = new java.util.Date();
+		//sdf.format("yyyy.mm.dd");
+		System.out.println(sdf.format(date));*/
+		String s = " date +";
+		Date date = new Date(s);
+		try {
+			date.regexp();
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Mauvaise expression");
+		}
+	}
 }
