@@ -30,7 +30,6 @@ public class DateFunction extends Process{
 		try{
 			String[] dateString = commande.split("\\s*date((\\s)*+)?");
 			String cmd = purgeEmptyString(dateString);
-			System.out.println(cmd);//TODO REMOVE
 			if (Objects.isNull(cmd)){
 				Date dNow = new Date();
 				String correctedFormat = replaceArguments("+%Y-%M-%d");

@@ -6,10 +6,10 @@ import java.util.*;
 public class Console {
 
 	private static InputStreamReader in = new InputStreamReader(System.in);
-	private static OutputStreamWriter out = new OutputStreamWriter(System.out);
+	//private static OutputStreamWriter out = new OutputStreamWriter(System.out);
 	
 	public static final BufferedReader stdInput = new BufferedReader(in);
-	public static final BufferedWriter stdOutput = new BufferedWriter(out);	
+	//public static final BufferedWriter stdOutput = new BufferedWriter(out);	
 	
 	public static void main(String[] args){		
 		

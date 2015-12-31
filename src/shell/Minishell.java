@@ -135,7 +135,8 @@ public class Minishell {
 				else kill(Integer.parseInt(pid[0]));
 			} 
 			catch (MauvaiseSyntaxeException i) {
-				System.out.println("Commande incorrecte, la syntaxe est :\n kill <pid>(int)");
+				System.out.println("Commande incorrecte, la syntaxe est :\n kill <pid>(int)"
+						+ "\n\t ou le pid n'existe pas");
 			} 
 			catch (Exception e) { 
 				System.out.println("Il faut donner un entier en argument!"); 
