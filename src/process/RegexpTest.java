@@ -78,16 +78,27 @@ public class RegexpTest {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	public void dateTest(){
-		/*SimpleDateFormat sdf = new SimpleDateFormat("YYYYYYYYYYY");
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYYYYYYYYY");
 		java.util.Date date = new java.util.Date();
 		//sdf.format("yyyy.mm.dd");
-		System.out.println(sdf.format(date));*/
+		System.out.println(sdf.format(date));
 		String s = " date";
 		DateFunction date = new DateFunction(s);
 		try {
 			date.run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}*/
+	
+	@Test
+	public void findTest(){
+		Minishell m = new Minishell();
+		Find find = new Find(" find src -name .*jAvA ");
+		try {
+			find.run();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
