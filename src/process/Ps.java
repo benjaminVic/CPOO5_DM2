@@ -1,6 +1,8 @@
 package process;
 
-import java.util.List;
+import java.util.*;
+import java.util.Map;
+import java.util.concurrent.Future;
 import java.util.regex.PatternSyntaxException;
 
 import shell.Minishell;
@@ -18,7 +20,11 @@ public class Ps extends Process{
 	public void run() {
 		try {
 			regexp();
-			List<Process> list = Minishell.getListProcess();
+			List<Process> list = new ArrayList<Process>();
+			
+			for(Map.Entry<Process,Future<Void>> entree: Minishell.getMapProcess().entrySet()){
+				list.add(entree.getKey());			
+			}
 
 			//TODO arranger l'zffichage
 			System.out.println("PID  \t\t CMD");

@@ -16,7 +16,7 @@ import shell.Minishell;
 
 public class RegexpTest {
 	
-	@Test
+	/*@Test
 	public void testLs() {
 		Ls l = new Ls("ls");		
 		try {
@@ -98,5 +98,11 @@ public class RegexpTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}*/
+	
+	@Test
+	public void killTest(){
+		Minishell m = new Minishell();
+		m.processMatcher("kill coco");
 	}
 }

@@ -18,6 +18,7 @@ public abstract class Process implements Runnable{
 	protected String commande;
 	protected String localDir;
 	
+	
 	/**
 	 * Constructeur de Process
 	 * @param commande : la commande dont la synthae sera vérifiée
