@@ -16,7 +16,7 @@ import shell.Minishell;
 
 public class RegexpTest {
 	
-/*	@Test
+	@Test
 	public void testLs() {
 		Ls l = new Ls("ls");		
 		try {
@@ -76,7 +76,7 @@ public class RegexpTest {
 		if (!System.getProperty("os.name").contains("Windows")){
 			fail("HAHA t'es sur mac hafça :p");
 		}
-	}*/
+	}
 	
 	@Test
 	public void dateTest(){
@@ -84,7 +84,7 @@ public class RegexpTest {
 		java.util.Date date = new java.util.Date();
 		//sdf.format("yyyy.mm.dd");
 		System.out.println(sdf.format(date));*/
-		String s = " date";
+		String s = " date   +%E-%u-%a";
 		DateFunction date = new DateFunction(s);
 		try {
 			date.run();

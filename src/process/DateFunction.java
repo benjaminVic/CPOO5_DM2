@@ -20,37 +20,144 @@ public class DateFunction extends Process{
 	//[^GyYMwWDdFEuaHkKhmsSzZX]
 	public DateFunction(String commande) {
 		super(commande);
-		// TODO finish regexp
-		this.regexp = "[\\s]*date([\\s]+\\+(.)*)?";
+		this.regexp = "[\\s]*date([\\s]+\\+(%.)*)?";
 				/*+ "%(G|y|Y|M|w|W|D|d|F|E|u|a|H|k|K|h|m|s|S|z|Z|X)+?)*"
 				+ ")?";*/
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		try{
-			String[] dateString = commande.split("\\s*date\\s*?");
+			String[] dateString = commande.split("\\s*date((\\s)*+)?");
 			String cmd = purgeEmptyString(dateString);
-			System.out.println(cmd);
+			System.out.println(cmd);//TODO REMOVE
 			if (Objects.isNull(cmd)){
 				Date dNow = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("+%Y-%M-%d");
+				String correctedFormat = replaceArguments("+%Y-%M-%d");
+				SimpleDateFormat sdf = new SimpleDateFormat(correctedFormat);
 				System.out.println(sdf.format(dNow));
 			} else {
-				this.regexp();
-				SimpleDateFormat sdf = new SimpleDateFormat(cmd);
+				String correctedFormat = replaceArguments(cmd);
+				Date dNow = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat(correctedFormat);
+				System.out.println(sdf.format(dNow));
 			}
 		} catch (MauvaiseSyntaxeException m) {
-			System.out.println("\tLa string doit être de la forme +%Y-%m-%d\n"
+			System.out.println("\tLa string doit être de la forme +%y-%M-%d\n"
 					+ "\tLes caractères supportés sont GyYmwWDdFEuaHkKhmsSzZX");
 		} catch (IllegalArgumentException i) {
-			System.out.println("\tLes caractères supportés sont GyYmwWDdFEuaHkKhmsSzZX");
+			System.out.println("\tLes caractères supportés sont GyYmwWDdFEuaHkKhmsSzZX"
+					+ "\n\tVeuillez utiliser des '-' comme séparateurs entre les lettres.");
 			i.printStackTrace();
 		} catch (Exception e){
-			System.out.println("CHOCAPIC C FORT EN CHOCOLAT");
 			e.printStackTrace();
 		}
 	}
 
+	public String replaceArguments(String cmd) throws MauvaiseSyntaxeException{
+		StringBuilder sb = new StringBuilder();
+		char[] totot = cmd.toCharArray();
+		if (!(totot[0] == '+')) throw new MauvaiseSyntaxeException();		
+		for (int i = 1 ; i<totot.length ; i++) {
+			if (totot[i]=='%'){
+				i++;
+				switch (totot[i]){
+
+				case ('G') :
+					sb.append("GG");
+				break;
+
+				case ('y') : 
+					sb.append("yyyy");
+				break;
+
+				case ('Y') :
+					sb.append("YYYY");
+				break;
+
+				case ('M') :
+					sb.append("MM");
+				break;
+
+				case ('w') :
+					sb.append("ww");
+				break;
+
+				case ('W') :
+					sb.append("W");
+				break;
+
+				case ('D') :
+					sb.append("DDD");
+				break;
+
+				case ('d') :
+					sb.append("dd");
+				break;
+
+				case ('F') :
+					sb.append("F");
+				break;
+
+				case ('E') :
+					sb.append("EEEEEEE");
+				break;
+
+				case ('u') :
+					sb.append("u");
+				break;
+
+				case ('a') :
+					sb.append("aa");
+				break;
+
+				case ('H') :
+					sb.append("H");
+				break;
+
+				case ('k') :
+					sb.append("kk");
+				break;
+
+				case ('K') :
+					sb.append("K");
+				break;
+
+				case ('h') :
+					sb.append("hh");
+				break;
+
+				case ('m') :
+					sb.append("mm");
+				break;
+
+				case ('s') :
+					sb.append("ss");
+				break;
+
+				case ('S') :
+					sb.append("SSS");
+				break;
+
+				case ('z') :
+					sb.append("z");
+				break;
+
+				case ('Z') :
+					sb.append("Z");
+				break;
+
+				case ('X') :
+					sb.append("X");
+				break;
+
+				default : 
+					throw new IllegalArgumentException();
+				}
+			} else {
+				sb.append(totot[i]);
+			}
+		}
+		return sb.toString();
+	}
 }
