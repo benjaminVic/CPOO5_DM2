@@ -53,7 +53,12 @@ public class Minishell {
 				futurePs.get();
 				mapProcess.put(ps,futurePs);
 			} catch (InterruptedException e) {
+<<<<<<< HEAD
 				e.printStackTrace();
+=======
+				System.out.println("La commande ps de pid: " + ps.getPid()
+						+ " a été interrompue.");
+>>>>>>> origin/master
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -68,7 +73,12 @@ public class Minishell {
 				futurePwd.get();
 				mapProcess.put(pwd,futurePwd);
 			} catch (InterruptedException e) {
+<<<<<<< HEAD
 				e.printStackTrace();
+=======
+				System.out.println("La commande pwd de pid: " + pwd.getPid()
+						+ " a été interrompue.");
+>>>>>>> origin/master
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -83,7 +93,12 @@ public class Minishell {
 				futureCd.get();
 				mapProcess.put(cd,futureCd);
 			} catch (InterruptedException e) {
+<<<<<<< HEAD
 				e.printStackTrace();
+=======
+				System.out.println("La commande cd de pid: " + cd.getPid()
+						+ " a été interrompue.");
+>>>>>>> origin/master
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -98,7 +113,12 @@ public class Minishell {
 				futureDate.get();
 				mapProcess.put(date,futureDate);
 			} catch (InterruptedException e) {
+<<<<<<< HEAD
 				e.printStackTrace();
+=======
+				System.out.println("La commande date de pid: " + date.getPid()
+						+ " a été interrompue.");
+>>>>>>> origin/master
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -113,7 +133,12 @@ public class Minishell {
 				futureFind.get();
 				mapProcess.put(find,futureFind);
 			} catch (InterruptedException e) {
+<<<<<<< HEAD
 				e.printStackTrace();
+=======
+				System.out.println("La commande find de pid : " + find.getPid()
+						+ " a été interrompue.");
+>>>>>>> origin/master
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -134,9 +159,32 @@ public class Minishell {
 			catch (Exception e) { 
 				System.out.println("Il faut donner un entier en argument!"); 
 			}
+<<<<<<< HEAD
 			break;		
 			
 		default :
+=======
+			break;
+
+		case ("compteJusqua"):
+			Process compteJusqua = new CompteJusqua(s);
+			Future<Void> futureCompteJusqua = es.<Void> submit(compteJusqua, null);
+			try {
+				futureCompteJusqua.get();
+				mapProcess.put(compteJusqua, futureCompteJusqua);
+			} catch (InterruptedException e) {
+				System.out.println("La commande date de pid: " + compteJusqua.getPid()
+						+ " a été interrompue.");
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} finally {
+				mapProcess.remove(compteJusqua);
+			}
+			break;
+
+		default:
+			System.out.println("Ceci n'est pas la commande que vous recherchez");
+>>>>>>> origin/master
 			break;
 		}
 	}
@@ -177,7 +225,10 @@ public class Minishell {
 	public static Map<Process,Future<Void>> getMapProcess() {
 		return mapProcess;
 	}
+<<<<<<< HEAD
 	
 	//_____________________________________________________________________
 
+=======
+>>>>>>> origin/master
 }
