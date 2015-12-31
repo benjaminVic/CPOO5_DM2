@@ -111,10 +111,4 @@ public class Find extends Process{
 		}
 	}
 
-	@Override
-	public void regexp() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

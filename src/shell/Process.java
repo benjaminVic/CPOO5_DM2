@@ -14,7 +14,6 @@ public abstract class Process implements Runnable{
 
 	//L'atomic interger permet d'avoir un pid distinct pour chaque Thread
 	protected static AtomicInteger pid = new AtomicInteger(0);
-	//pid.getAndIncrement();
 	protected final int currentProcessPid;
 	protected String regexp;
 	protected String commande;

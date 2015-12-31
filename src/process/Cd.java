@@ -15,65 +15,45 @@ public class Cd extends Process{
 						//"\\s*cd\\s(([A-Z]:)?/)?(([^\\/:*?\"\\.<>|]+[\\s]*)*|(\\.\\.))/?";
 	}
 	
-	/*EXO5
-	 * gère les sous-domaines && www.
-	 * "((https?://))(%s.)+%s(%s)* /?"
-	 * "[a-ZA-Z]+"+
-	 * "((ca)|(fr)|(org)|(com)|(co.uk))"+
-	 * "[a-zA-Z]+"
-	 */
-	
 	@Override
 	public void run() {
 		try {
-			
-			//regexp();
 			String[] path = commande.split("\\s*cd\\s+");
 			String cmd = purgeEmptyString(path);
 			
-			/*if (cmd.contains("..")) {
-				int endOfPath = Minishell.getCurrentDir().lastIndexOf(File.separatorChar);
-				File directory = new File(Minishell.getCurrentDir().substring(0, endOfPath));
+			//ABSOLUTE PATH
+			if (cmd.contains(":") || cmd.indexOf("/", 0) == 1) {
+				File directory = new File(cmd);
 				if (directory.isDirectory() == true) {
-					Minishell.setCurrentDir(Minishell.getCurrentDir().substring(0, endOfPath));
+					Minishell.setCurrentDir(cmd);
+					System.out.println(directory.getCanonicalPath());
 				} else {
-					System.out.println(1 + " n'est pas un repertoire.");
+					System.out.println(Minishell.getCurrentDir()+File.separatorChar+cmd + " n'est pas un repertoire.");
+					throw new MauvaiseSyntaxeException();
 				}
-			/*} else A PATH OR ABSOLUTE PATH{*/
-				//ABSOLUTE PATH
-				if (cmd.contains(":") || cmd.indexOf("/", 0) == 1) {
-					File directory = new File(cmd);
-					if (directory.isDirectory() == true) {
-						Minishell.setCurrentDir(cmd);
+			} 
+			//NORMAL PATH
+			else {
+				File directory = new File (Minishell.getCurrentDir()+File.separatorChar+cmd);
+				if (directory.isDirectory() == true) {
+						Minishell.setCurrentDir(directory.getCanonicalPath());
 						System.out.println(directory.getCanonicalPath());
-					} else {
-						System.out.println(Minishell.getCurrentDir()+File.separatorChar+cmd + " n'est pas un repertoire.");
-						throw new MauvaiseSyntaxeException();
-					}
-				} else /*NORMAL PATH*/ {
-					File directory = new File (Minishell.getCurrentDir()+File.separatorChar+cmd);
-					if (directory.isDirectory() == true) {
-							Minishell.setCurrentDir(directory.getCanonicalPath());
-							System.out.println(directory.getCanonicalPath());
-					} else {
-						System.out.println(Minishell.getCurrentDir()+File.separatorChar+cmd + " n'est pas un repertoire.");
-						throw new MauvaiseSyntaxeException();
-					}
+				} else {
+					System.out.println(Minishell.getCurrentDir()+File.separatorChar+cmd + " n'est pas un repertoire.");
+					throw new MauvaiseSyntaxeException();
 				}
-			//}
-			
-		} catch (PatternSyntaxException e) {
+			}
+		} 
+		catch (PatternSyntaxException e) {
 			System.out.println("Mauvaise expression régulière");
 			e.printStackTrace();
-		} catch (MauvaiseSyntaxeException i) {
-			// TODO Renvoyer à l'utilisateur un message indiquant sa mauvaise
-			// syntaxe
+		} 
+		catch (MauvaiseSyntaxeException i) {
 			System.out.println("Commande incorrecte, la syntaxe est :\n cd <..>|<sous-répertoire>|<chemin absolu>");
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			// TODO close thread
-		}
+		} 
 	}
 	
 }
