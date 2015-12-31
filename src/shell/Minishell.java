@@ -26,7 +26,8 @@ public class Minishell {
 	 * @param s : string à executer
 	 */
 	public void processMatcher(String s){
-		String results[] = s.split("[\\s]*");
+		String results[] = s.split("[\\s]");
+		results = Process.removeNullValue(results);
 		//10 est une valeur arbitraire
 		ExecutorService es = Executors.newFixedThreadPool(10);
 		switch (results[0]){
@@ -158,7 +159,9 @@ public class Minishell {
 			break;
 
 		default:
-			System.out.println("Ceci n'est pas la commande que vous recherchez");
+			if (!Objects.equals(results[0],"quit")){
+				System.out.println("Ceci n'est pas la commande que vous recherchez");
+			}
 			break;
 		}
 	}
