@@ -56,12 +56,12 @@ public class DateFunction extends Process{
 
 	public String replaceArguments(String cmd) throws MauvaiseSyntaxeException{
 		StringBuilder sb = new StringBuilder();
-		char[] totot = cmd.toCharArray();
-		if (!(totot[0] == '+')) throw new MauvaiseSyntaxeException();		
-		for (int i = 1 ; i<totot.length ; i++) {
-			if (totot[i]=='%'){
+		char[] timeVortex = cmd.toCharArray();
+		if (!(timeVortex[0] == '+')) throw new MauvaiseSyntaxeException();		
+		for (int i = 1 ; i<timeVortex.length ; i++) {
+			if (timeVortex[i]=='%'){
 				i++;
-				switch (totot[i]){
+				switch (timeVortex[i]){
 
 				case ('G') :
 					sb.append("GG");
@@ -155,7 +155,7 @@ public class DateFunction extends Process{
 					throw new IllegalArgumentException();
 				}
 			} else {
-				sb.append(totot[i]);
+				sb.append(timeVortex[i]);
 			}
 		}
 		return sb.toString();

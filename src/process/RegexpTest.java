@@ -2,9 +2,6 @@ package process;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -73,9 +70,9 @@ public class RegexpTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // appel bloquant
-		if (!System.getProperty("os.name").contains("Windows")){
-			fail("HAHA t'es sur mac hafça :p");
-		}
+		//if (!System.getProperty("os.name").contains("Windows")){
+		//	fail("HAHA t'es sur mac hafça :p");
+		//}
 	}
 	
 	@Test
@@ -104,5 +101,11 @@ public class RegexpTest {
 	public void killTest(){
 		Minishell m = new Minishell();
 		m.processMatcher("kill coco");
+	}
+	
+	@Test
+	public void compteTest(){
+		CompteJusqua cj = new CompteJusqua("   compteJusqua 10 %d");
+		cj.run();
 	}
 }

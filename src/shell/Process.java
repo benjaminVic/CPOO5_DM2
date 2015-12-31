@@ -1,5 +1,7 @@
 package shell;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
@@ -60,5 +62,16 @@ public abstract class Process implements Runnable{
 			}
 		}
 		return null;
+	}
+
+	public static String[] removeNullValue(String[] v) {
+	    List<String> list = new ArrayList<String>();
+	    for(String s : v) {
+	        if(s != null && s.length() > 0) {
+	           list.add(s);
+	        }
+	     }
+	     v = list.toArray(new String[list.size()]);
+	     return v;
 	}
 }

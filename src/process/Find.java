@@ -15,17 +15,6 @@ public class Find extends Process{
 	public Find(String commande) {
 		super(commande);		
 	}
-
-	public static String[] removeNullValue(String[] v) {
-	    List<String> list = new ArrayList<String>();
-	    for(String s : v) {
-	        if(s != null && s.length() > 0) {
-	           list.add(s);
-	        }
-	     }
-	     v = list.toArray(new String[list.size()]);
-	     return v;
-	}
 	
 	public void findFilesName(File directory, String regexp){
 		File[] listFiles = directory.listFiles();
