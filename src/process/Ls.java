@@ -19,12 +19,7 @@ public class Ls extends Process {
 			regexp();
 			File directory = new File(Minishell.getCurrentDir());
 			String[] list = directory.list();
-<<<<<<< HEAD
-
-=======
 			System.out.println("Répertoire courant : "+Minishell.getCurrentDir());
-			//TODO remplacer les affichage par qlq chose de plus propre
->>>>>>> origin/master
 			for (int i =0; i<list.length; i++){
 				System.out.println(list[i]);
 			}

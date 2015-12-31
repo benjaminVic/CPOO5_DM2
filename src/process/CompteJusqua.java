@@ -31,11 +31,14 @@ public class CompteJusqua extends Process {
 			timePrint = new TimePrinter("%d\n");
 		}
 		ScheduledExecutorService tarkin = Executors.newScheduledThreadPool(1);
-		tarkin.scheduleAtFixedRate(timePrint, 0, 1, TimeUnit.SECONDS);
-		try {
-			tarkin.awaitTermination(timeLimit, TimeUnit.SECONDS);
-		} catch (InterruptedException e) { // TODO Auto-generated catch block
-			e.printStackTrace();
+		for (int i = 0; i<10 ;i++){
+			timePrint.run();
+			try {
+				wait(timeLimit);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

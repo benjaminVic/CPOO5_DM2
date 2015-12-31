@@ -57,12 +57,8 @@ public class Minishell {
 				futurePs.get();
 				mapProcess.put(ps, futurePs);
 			} catch (InterruptedException e) {
-<<<<<<< Updated upstream
 				System.out.println("La commande ps de pid: " + ps.getPid()
 						+ " a été interrompue.");
-=======
-				e.printStackTrace();
->>>>>>> Stashed changes
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -77,12 +73,8 @@ public class Minishell {
 				futurePwd.get();
 				mapProcess.put(pwd, futurePwd);
 			} catch (InterruptedException e) {
-<<<<<<< Updated upstream
 				System.out.println("La commande pwd de pid: " + pwd.getPid()
 						+ " a été interrompue.");
-=======
-				e.printStackTrace();
->>>>>>> Stashed changes
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -97,12 +89,8 @@ public class Minishell {
 				futureCd.get();
 				mapProcess.put(cd, futureCd);
 			} catch (InterruptedException e) {
-<<<<<<< Updated upstream
 				System.out.println("La commande cd de pid: " + cd.getPid()
 						+ " a été interrompue.");
-=======
-				e.printStackTrace();
->>>>>>> Stashed changes
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -117,12 +105,8 @@ public class Minishell {
 				futureDate.get();
 				mapProcess.put(date, futureDate);
 			} catch (InterruptedException e) {
-<<<<<<< Updated upstream
 				System.out.println("La commande date de pid: " + date.getPid()
 						+ " a été interrompue.");
-=======
-				e.printStackTrace();
->>>>>>> Stashed changes
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -137,12 +121,8 @@ public class Minishell {
 				futureFind.get();
 				mapProcess.put(find, futureFind);
 			} catch (InterruptedException e) {
-<<<<<<< Updated upstream
 				System.out.println("La commande find de pid : " + find.getPid()
 						+ " a été interrompue.");
-=======
-				e.printStackTrace();
->>>>>>> Stashed changes
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			} finally {
@@ -166,7 +146,7 @@ public class Minishell {
 			break;
 
 		case ("compteJusqua"):
-			Process compteJusqua = new DateFunction(s);
+			Process compteJusqua = new CompteJusqua(s);
 			Future<Void> futureCompteJusqua = es.<Void> submit(compteJusqua, null);
 			try {
 				futureCompteJusqua.get();
@@ -227,24 +207,4 @@ public class Minishell {
 	public static Map<Process, Future<Void>> getMapProcess() {
 		return mapProcess;
 	}
-<<<<<<< Updated upstream
-	/*
-	 * public void setListProcess(List<Process> listProcess) { this.listProcess
-	 * = listProcess; }
-	 */
-
-	// _____________________________________________________________________
-
-	/*
-	 * public void template() { ExecutorService es =
-	 * Executors.newFixedThreadPool(4); Callable<Void> call =
-	 * Executors.<Void>callable(task, void); //task : instance de commande a
-	 * execter Future<Void> f = es.<Void>submit(task, null); f.get(); // appel
-	 * bloquant }
-	 */
-=======
-	
-	//_____________________________________________________________________
->>>>>>> Stashed changes
-
 }
