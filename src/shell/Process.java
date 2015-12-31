@@ -1,5 +1,6 @@
 package shell;
 
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,4 +47,17 @@ public abstract class Process implements Runnable{
 		return this.currentProcessPid;
 	}
 	
+	/**
+	 * Récupère la première cellule non-vide de sTable
+	 * @param sTable : tableau généré via la commande
+	 * @return : String n'étant pas "" donc le path ou ..
+	 */
+	public String purgeEmptyString(String[] sTable){
+		for (int i = 0; i<sTable.length ; ++i){
+			if (!Objects.equals(sTable[i],"")){
+				return sTable[i];
+			}
+		}
+		return null;
+	}
 }

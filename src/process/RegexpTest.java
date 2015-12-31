@@ -84,13 +84,12 @@ public class RegexpTest {
 		java.util.Date date = new java.util.Date();
 		//sdf.format("yyyy.mm.dd");
 		System.out.println(sdf.format(date));*/
-		String s = " date +";
-		Date date = new Date(s);
+		String s = " date";
+		DateFunction date = new DateFunction(s);
 		try {
-			date.regexp();
+			date.run();
 		} catch (Exception e) {
 			e.printStackTrace();
-			fail("Mauvaise expression");
 		}
 	}
 }

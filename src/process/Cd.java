@@ -76,19 +76,5 @@ public class Cd extends Process{
 			// TODO close thread
 		}
 	}
-
-	/**
-	 * Récupère la première cellule non-vide de sTable
-	 * @param sTable : tableau généré via la commande
-	 * @return : String n'étant pas "" donc le path ou ..
-	 */
-	public String purgeEmptyString(String[] sTable){
-		for (int i = 0; i<sTable.length ; ++i){
-			if (!Objects.equals(sTable[i],"")){
-				return sTable[i];
-			}
-		}
-		return null;
-	}
 	
 }
