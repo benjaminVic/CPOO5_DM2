@@ -17,19 +17,18 @@ public class Pwd extends Process{
 	public void run() {
 		try {
 			regexp();
-			//TODO CHANGE TO PROPER STREAM
 	        System.out.println(Minishell.getCurrentDir());
-		} catch (PatternSyntaxException e) {
+		}
+		catch (PatternSyntaxException e) {
 			System.out.println("Mauvaise expression régulière");
 			e.printStackTrace();
-		} catch (MauvaiseSyntaxeException i) {
-			//TODO Renvoyer à l'utilisateur un message indiquant sa mauvaise syntaxe
+		} 
+		catch (MauvaiseSyntaxeException i) {
 			System.out.println("Commande incorrecte, la syntaxe est :\n ls");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			//TODO close thread 
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		} 
 	}
 
 }

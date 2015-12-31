@@ -15,7 +15,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import shell.Minishell;
 
 @RunWith(Parameterized.class)
 public class RegexParamTest {
