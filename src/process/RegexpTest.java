@@ -13,7 +13,7 @@ import shell.Minishell;
 
 public class RegexpTest {
 	
-	/*@Test
+	@Test
 	public void testLs() {
 		Ls l = new Ls("ls");		
 		try {
@@ -95,7 +95,7 @@ public class RegexpTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
 	@Test
 	public void killTest(){
@@ -105,7 +105,13 @@ public class RegexpTest {
 	
 	@Test
 	public void compteTest(){
-		CompteJusqua cj = new CompteJusqua("   compteJusqua 10 %d");
+		CompteJusqua cj = new CompteJusqua("   compteJusqua ui10 %d");
 		cj.run();
+	}
+	
+	@Test
+	public void processMatcherTest(){
+		Minishell m = new Minishell();
+		m.processMatcher("");
 	}
 }

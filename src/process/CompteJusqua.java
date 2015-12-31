@@ -20,7 +20,10 @@ public class CompteJusqua extends Process {
 
 		String arguments[] = commande.split("[\\s]");
 		arguments = removeNullValue(arguments);
-		int timeLimit = Integer.parseInt(arguments[1]) - 1;
+		int timeLimit=0;
+		try {timeLimit = Integer.parseInt(arguments[1]) - 1;}
+		catch (NumberFormatException n) {System.out.println("Commande incorrecte, la syntaxe est :\n "
+				+ "\tcompteJusqua <entier> [<format>=%d\\n]");}
 		TimePrinter timePrint;
 		if (arguments.length > 2) {
 			timePrint = new TimePrinter(arguments[2]);
