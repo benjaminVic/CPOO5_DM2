@@ -5,13 +5,16 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class Console {
-	static String s = null;
-	static Scanner scan = new Scanner(System.in);
+	/*static String s = null;
+	static Scanner scan = new Scanner(System.in);*/
 	
-	static Thread threadRead;
-	static Thread threadWrite; 	
+	private static InputStreamReader in = new InputStreamReader(System.in);
+	private static OutputStreamWriter out = new OutputStreamWriter(System.out);
 	
-	public static int write(BufferedWriter stdOut){
+	public static final BufferedReader stdInput = new BufferedReader(in);
+	public static final BufferedWriter stdOutput = new BufferedWriter(out);	
+	
+	/*public static int write(BufferedWriter stdOut){
 		System.out.print("MinishellPrompt$ ");
 		String input = scan.nextLine();
 		if(input.equals("quit")){
@@ -25,9 +28,9 @@ public class Console {
 			e.printStackTrace();
 		}	
 		return 0;
-	}
+	}*/
 	
-	public static void read(BufferedReader stdInput) {
+	/*public static void read(BufferedReader stdInput) {
 		try {
 			while ((s = stdInput.readLine()) != null) {
 				System.out.println(s);
@@ -35,11 +38,22 @@ public class Console {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public static void main(String[] args){		
 		
-		
+		try {
+			Minishell m = new Minishell();
+			String lastLine;
+			do{
+				System.out.print("MinishellPrompt$ ");
+				lastLine = stdInput.readLine();
+				m.processMatcher(lastLine);
+			} while(!Objects.equals(lastLine,"quit"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		/*
 		 * ExecutorService execute = Executors.newSingleThreadExecutor();
@@ -53,7 +67,7 @@ public class Console {
 		 * 
 		 * */
 		
-		try {
+		/*try {
 			
 			ProcessBuilder builder = new ProcessBuilder("/bin/bash");
 			builder.redirectErrorStream(true);
@@ -71,12 +85,12 @@ public class Console {
 					return write(stdOutput);
 				}			
 			};
-			Future<Integer> ft1 = execute.submit(write);
+			Future<Integer> ft1 = execute.submit(write);*/
 			
 			/*FutureTask<Void> ftwrite = new FutureTask<Void>(write);
 			threadWrite = new Thread(ftwrite);
 		    threadWrite.start();*/
-			
+			/*
 		    Callable<Void> read = new Callable<Void>(){
 				public Void call() throws Exception {
 					read(stdInput);
@@ -87,7 +101,8 @@ public class Console {
 			
 			while(ft1.get()!=1){
 				write(stdOutput);
-			}
+			}*/
+			
 			
 			/*FutureTask<Void> ftread = new FutureTask<Void>(read);
 			threadRead = new Thread(ftread);
@@ -121,7 +136,7 @@ public class Console {
 				}
 			}	*/		
 			
-			execute.shutdown();		
+		/*	execute.shutdown();		
 		} 
 		catch (IOException e) {
 			e.printStackTrace();	
@@ -131,7 +146,7 @@ public class Console {
 		} catch (ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		} */
 	}
 
 }
