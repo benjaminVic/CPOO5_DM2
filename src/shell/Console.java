@@ -19,7 +19,9 @@ public class Console {
 			do{
 				System.out.print("MinishellPrompt$ ");
 				lastLine = stdInput.readLine();
-				m.processMatcher(lastLine);
+				if (!Objects.equals(lastLine,"")){
+					m.processMatcher(lastLine);
+				}
 			} while(!Objects.equals(lastLine,"quit"));
 		} 
 		catch (IOException e) {

@@ -1,9 +1,5 @@
 package process;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import shell.Process;
 
 public class CompteJusqua extends Process {
@@ -30,7 +26,7 @@ public class CompteJusqua extends Process {
 		} else {
 			timePrint = new TimePrinter("%d\n");
 		}
-		for (int i = 0 ; i<10 ; i++)
+		for (int i = 0 ; i<timeLimit ; i++)
 		try {
 			timePrint.run();
 			timePrint.sleep(1000);
