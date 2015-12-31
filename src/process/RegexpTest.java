@@ -105,13 +105,13 @@ public class RegexpTest {
 	
 	@Test
 	public void compteTest(){
-		CompteJusqua cj = new CompteJusqua("   compteJusqua ui10 %d");
+		CompteJusqua cj = new CompteJusqua("   compteJusqua 5");
 		cj.run();
 	}
 	
-	@Test
+	/*@Test
 	public void processMatcherTest(){
 		Minishell m = new Minishell();
 		m.processMatcher("");
-	}
+	}*/
 }

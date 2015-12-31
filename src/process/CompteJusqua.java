@@ -30,19 +30,17 @@ public class CompteJusqua extends Process {
 		} else {
 			timePrint = new TimePrinter("%d\n");
 		}
-		ScheduledExecutorService tarkin = Executors.newScheduledThreadPool(1);
-		for (int i = 0; i<10 ;i++){
+		for (int i = 0 ; i<10 ; i++)
+		try {
 			timePrint.run();
-			try {
-				wait(timeLimit);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			timePrint.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	private class TimePrinter implements Runnable {
+	private class TimePrinter extends Thread {
 
 		String cmd;
 
